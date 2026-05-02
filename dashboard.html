@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard · Hostel Management</title>
+    <style>
+      /* Fallback so page isn't blank if assets/styles.css fails to load */
+      body {
+        margin: 0;
+        background: #0b1220;
+        color: #f8fafc;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body data-page="dashboard" class="text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-semibold" href="dashboard.html">
+          <span class="brand-badge">HMS <span class="muted">Hostel</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="rooms" href="rooms.html">Rooms</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="allocation" href="allocation.html">Allocation</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="vacate" href="vacate.html">Vacate</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-light btn-sm" href="rooms.html">Manage Rooms</a>
+            <button class="btn btn-primary btn-sm" id="btnResetData" type="button">Reset Dummy Data</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container pb-5">
+      <div class="row align-items-end g-4 mt-1">
+        <div class="col-lg-8">
+          <div class="glass rounded-4 p-4">
+            <h1 class="h3 mb-1">Dashboard</h1>
+            <p class="muted mb-0">
+              Summary of occupancy and allocations. Last updated:
+              <span class="fw-semibold" id="lastUpdatedAt">-</span>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="glass rounded-4 p-4">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="muted small">Quick actions</div>
+                <div class="fw-semibold">Allocate or Vacate</div>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-outline-light btn-sm" href="allocation.html">Allocate</a>
+                <a class="btn btn-outline-light btn-sm" href="vacate.html">Vacate</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <div class="kpi rounded-4 p-4 glass">
+            <div class="muted small mb-1">Occupied rooms</div>
+            <div class="display-6 fw-semibold" id="kpiOccupiedRooms">0</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="kpi rounded-4 p-4 glass">
+            <div class="muted small mb-1">Available rooms</div>
+            <div class="display-6 fw-semibold" id="kpiAvailableRooms">0</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="kpi rounded-4 p-4 glass">
+            <div class="muted small mb-1">Total students</div>
+            <div class="display-6 fw-semibold" id="kpiTotalStudents">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-1">
+        <div class="col-12">
+          <div class="glass rounded-4 p-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+              <div>
+                <h2 class="h5 mb-0">Recent allocations</h2>
+                <div class="muted small">Latest student-room assignments (dummy data).</div>
+              </div>
+              <a class="btn btn-outline-light btn-sm" href="allocation.html">Add allocation</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-dark table-hover align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th>Room</th>
+                    <th>Reg. No</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Allocated at</th>
+                  </tr>
+                </thead>
+                <tbody id="recentAllocationsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastHost"></div>
+
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+

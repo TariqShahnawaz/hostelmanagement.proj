@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vacate · Hostel Management</title>
+    <style>
+      /* Fallback so page isn't blank if assets/styles.css fails to load */
+      body {
+        margin: 0;
+        background: #0b1220;
+        color: #f8fafc;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body data-page="vacate" class="text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-semibold" href="dashboard.html">
+          <span class="brand-badge">HMS <span class="muted">Hostel</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="rooms" href="rooms.html">Rooms</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="allocation" href="allocation.html">Allocation</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="vacate" href="vacate.html">Vacate</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-light btn-sm" href="allocation.html">Allocate</a>
+            <a class="btn btn-primary btn-sm" href="dashboard.html">Back to Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container pb-5">
+      <div class="row g-4 mt-3">
+        <div class="col-lg-5">
+          <div class="glass rounded-4 p-4">
+            <h1 class="h4 mb-1">Checkout / Vacate</h1>
+            <p class="muted mb-0">
+              Select a room and a student, then vacate to free up the bed.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="glass rounded-4 p-4">
+            <form id="vacateForm" class="row g-3">
+              <div class="col-12">
+                <label for="vacateRoom" class="form-label">Room</label>
+                <select id="vacateRoom" class="form-select" required></select>
+              </div>
+              <div class="col-12">
+                <label for="vacateStudent" class="form-label">Student in room</label>
+                <select id="vacateStudent" class="form-select" required></select>
+                <div class="form-text text-light-emphasis">Only students currently allocated to the chosen room are listed.</div>
+              </div>
+
+              <div class="col-12 d-flex gap-2">
+                <button class="btn btn-primary" type="submit">Vacate student</button>
+                <a class="btn btn-outline-light" href="rooms.html">View Rooms</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastHost"></div>
+
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+

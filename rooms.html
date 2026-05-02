@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rooms · Hostel Management</title>
+    <style>
+      /* Fallback so page isn't blank if assets/styles.css fails to load */
+      body {
+        margin: 0;
+        background: #0b1220;
+        color: #f8fafc;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body data-page="rooms" class="text-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-semibold" href="dashboard.html">
+          <span class="brand-badge">HMS <span class="muted">Hostel</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="rooms" href="rooms.html">Rooms</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="allocation" href="allocation.html">Allocation</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="vacate" href="vacate.html">Vacate</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-light btn-sm" href="allocation.html">Allocate</a>
+            <a class="btn btn-primary btn-sm" href="dashboard.html">Back to Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container pb-5">
+      <div class="glass rounded-4 p-4 mt-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3">
+          <div>
+            <h1 class="h4 mb-1">Room Management</h1>
+            <div class="muted">Room list and availability (dummy data).</div>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <div>
+              <label class="form-label small muted mb-1" for="roomsSearch">Search</label>
+              <input id="roomsSearch" class="form-control form-control-sm" placeholder="e.g. A-101 or B" />
+            </div>
+            <div>
+              <label class="form-label small muted mb-1" for="roomsFilter">Filter</label>
+              <select id="roomsFilter" class="form-select form-select-sm">
+                <option value="all">All</option>
+                <option value="available">Available</option>
+                <option value="occupied">Occupied</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-4 p-4 mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="muted small" id="roomsCount">-</div>
+          <a class="btn btn-outline-light btn-sm" href="allocation.html">Assign student to room</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-dark table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Room</th>
+                <th>Block/Floor</th>
+                <th>Capacity</th>
+                <th>Occupied</th>
+                <th>Available</th>
+                <th>Status</th>
+                <th class="text-end">Action</th>
+              </tr>
+            </thead>
+            <tbody id="roomsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastHost"></div>
+
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+
